@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Şahbaz Family - Premium Video İndirici</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(-45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #667eea 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            color: #fff;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .app-container {
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeIn 0.6s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .brand-logo {
+            font-size: 72px;
+            margin-bottom: 15px;
+            animation: eagleFloat 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+            display: inline-block;
+        }
+
+        @keyframes eagleFloat {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+            }
+            25% { 
+                transform: translateY(-12px) rotate(-3deg) scale(1.05); 
+            }
+            50% { 
+                transform: translateY(0px) rotate(0deg) scale(1); 
+            }
+            75% { 
+                transform: translateY(-12px) rotate(3deg) scale(1.05); 
+            }
+        }
+
+        .brand-name {
+            font-size: 36px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 30%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0;
+            text-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            letter-spacing: -1px;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+            }
+            50% { 
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+            }
+        }
+
+        .brand-tagline {
+            font-size: 16px;
+            color: rgba(255,255,255,0.85);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 28px;
+            padding: 28px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 
+                        inset 0 1px 0 rgba(255,255,255,0.25);
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.35), 
+                        inset 0 1px 0 rgba(255,255,255,0.25);
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        #urlInput {
+            flex: 1;
+            padding: 16px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-weight: 400;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        #urlInput::placeholder {
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+        }
+
+        #urlInput:focus {
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(0, 0, 0, 0.4);
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.15),
+                        inset 0 2px 8px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+
+        .paste-btn {
+            padding: 16px 24px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.1) 100%);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            min-width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .paste-btn:hover {
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.2) 100%);
+            transform: scale(1.08) rotate(-5deg);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .paste-btn:active {
+            transform: scale(0.95) rotate(0deg);
+        }
+
+        .action-btn, .liquid-btn {
+            position: relative;
+            padding: 18px 32px;
+            border: none;
+            border-radius: 18px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            overflow: visible;
+            filter: url('#liquid-goo');
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            width: 100%;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        .liquid-btn-primary {
+            background: linear-gradient(135deg, #ff007f 0%, #ff3399 50%, #ff66b2 100%);
+            background-size: 200% 200%;
+            animation: gradientFlow 3s ease infinite;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .liquid-btn.video {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .liquid-btn.audio {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .liquid-btn .btn-text {
+            position: relative;
+            z-index: 10;
+            display: block;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .liquid-btn .blob {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background: inherit;
+            border-radius: 50%;
+            transform: translateY(-50%) scale(0);
+            transition: transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1;
+        }
+
+        .liquid-btn .blob:nth-child(2) { left: 8%; transition-delay: 0s; }
+        .liquid-btn .blob:nth-child(3) { left: 32%; transition-delay: 0.08s; }
+        .liquid-btn .blob:nth-child(4) { left: 56%; transition-delay: 0.04s; }
+        .liquid-btn .blob:nth-child(5) { left: 80%; transition-delay: 0.12s; }
+
+        .liquid-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .liquid-btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        .liquid-btn:hover .blob {
+            transform: translateY(-50%) scale(3.2);
+        }
+
+        .liquid-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.6),
+                        0 0 30px rgba(255, 0, 127, 0.4);
+            animation: gradientFlow 3s ease infinite, pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { 
+                box-shadow: 0 6px 20px rgba(255, 0, 127, 0.4),
+                            0 0 0 0 rgba(255, 0, 127, 0.7);
+            }
+            50% { 
+                box-shadow: 0 10px 30px rgba(255, 0, 127, 0.6),
+                            0 0 0 15px rgba(255, 0, 127, 0);
+            }
+        }
+
+        .action-btn:active {
+            transform: translateY(-2px) scale(0.98);
+        }
+
+        .action-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            animation: none;
+            transform: none;
+        }
+
+        .loading-container {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .modern-spinner {
+            width: 56px;
+            height: 56px;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .result-card {
+            text-align: center;
+            animation: cardSlideUp 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        }
+
+        @keyframes cardSlideUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.95); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        .video-preview {
+            margin-bottom: 24px;
+            padding: 24px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .preview-info h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+            word-break: break-word;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #fff;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #00d084 0%, #00e676 100%);
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 700;
+            box-shadow: 0 6px 16px rgba(0,212,132,0.4);
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes badgePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 500;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .yt-notice-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .yt-notice-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            border-radius: 24px;
+            padding: 32px 28px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        0 0 40px rgba(255, 0, 127, 0.1);
+            animation: cardBounce 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes cardBounce {
+            from { 
+                opacity: 0; 
+                transform: scale(0.8) translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0); 
+            }
+        }
+
+        .yt-notice-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .yt-notice-title {
+            font-size: 22px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .yt-notice-text {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .yt-notice-features {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 24px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .yt-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .yt-feature-icon {
+            font-size: 22px;
+        }
+
+        .yt-feature span:last-child {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .yt-notice-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .yt-btn-cancel, .yt-btn-continue {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 14px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+        }
+
+        .yt-btn-cancel {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .yt-btn-cancel:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .yt-btn-continue {
+            background: linear-gradient(135deg, #ff007f 0%, #ff3399 100%);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.4);
+        }
+
+        .yt-btn-continue:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 0, 127, 0.6);
+        }
+
+        .yt-btn-continue:active, .yt-btn-cancel:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 15px; }
+            .brand-logo { font-size: 56px; }
+            .brand-name { font-size: 28px; }
+            .brand-tagline { font-size: 13px; }
+            .card { padding: 20px; border-radius: 20px; }
+            #urlInput, .paste-btn { padding: 14px 16px; font-size: 14px; }
+            .action-btn, .liquid-btn { padding: 16px 28px; font-size: 15px; }
+            .preview-info h3 { font-size: 15px; }
+            .yt-notice-card { padding: 24px 20px; }
+            .yt-notice-title { font-size: 19px; }
+            .yt-notice-text { font-size: 13px; }
+            .yt-btn-cancel, .yt-btn-continue { padding: 12px 16px; font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="brand-logo">🦅</div>
+            <h1 class="brand-name">✨Şahbaz Family✨</h1>
+            <p class="brand-tagline">PREMIUM VİDEO İNDİRİCİ</p>
+        </header>
+
+        <main>
+            <div class="card glass">
+                <div class="input-wrapper">
+                    <input type="url" id="urlInput" placeholder="Link yapıştırın (YouTube, TikTok, Instagram...)" autocomplete="off">
+                    <button class="paste-btn" onclick="pasteFromClipboard()" title="Yapıştır">📋</button>
+                </div>
+                <button class="action-btn liquid-btn-primary" onclick="analyzeURL()" id="analyzeBtn">
+                    <span class="btn-text">ANALİZ ET VE İNDİR</span>
+                    <div class="blob"></div>
+                    <div class="blob"></div>
+                    <div class="blob"></div>
+                    <div class="blob"></div>
+                    <div class="blob"></div>
+                </button>
+            </div>
+
+            <div id="loadingArea" class="loading-container" style="display: none;">
+                <div class="modern-spinner"></div>
+                <p>Video işleniyor, lütfen bekleyin...</p>
+            </div>
+
+            <div id="resultCard" class="card result-card glass" style="display: none;">
+                <div class="video-preview">
+                    <div class="preview-info">
+                        <h3 id="previewTitle">Video Hazır</h3>
+                        <span class="badge">✅ Hazır</span>
+                    </div>
+                </div>
+
+                <div class="download-buttons">
+                    <button class="liquid-btn video" onclick="downloadNow('mp4')" id="videoBtn">
+                        <span class="btn-text">⬇️ Video İndir (MP4)</span>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                    </button>
+
+                    <button class="liquid-btn audio" onclick="downloadNow('mp3')" id="audioBtn">
+                        <span class="btn-text">🎵 Ses İndir (MP3)</span>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                        <div class="blob"></div>
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Şahbaz Ailesi. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <div id="ytNoticeModal" class="yt-notice-modal" style="display: none;">
+        <div class="yt-notice-card">
+            <div class="yt-notice-icon">🎬</div>
+            <h2 class="yt-notice-title">YouTube İndirme Hakkında</h2>
+            <p class="yt-notice-text">
+                YouTube videoları, anlaşmalı partner sitemiz üzerinden güvenli bir şekilde indirilmektedir.
+            </p>
+            <div class="yt-notice-features">
+                <div class="yt-feature">
+                    <span class="yt-feature-icon">✅</span>
+                    <span>Güvenli indirme</span>
+                </div>
+                <div class="yt-feature">
+                    <span class="yt-feature-icon">⚡</span>
+                    <span>Hızlı işlem</span>
+                </div>
+                <div class="yt-feature">
+                    <span class="yt-feature-icon">🎯</span>
+                    <span>Yüksek kalite</span>
+                </div>
+            </div>
+            <div class="yt-notice-buttons">
+                <button class="yt-btn-cancel" onclick="closeYTNotice()">İptal</button>
+                <button class="yt-btn-continue" onclick="continueToYT()">Devam Et →</button>
+            </div>
+        </div>
+    </div>
+
+    <svg width="0" height="0" style="position: absolute;">
+        <filter id="liquid-goo">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+            <feColorMatrix in="blur" mode="matrix" values="
+                1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 22 -11" result="goo"/>
+            <feBlend in="SourceGraphic" in2="goo"/>
+        </filter>
+    </svg>
+
+    <script>
+        const BACKEND_URL = "https://sahbaz-backend.onrender.com";
+        let currentURL = "";
+        let currentJobId = "";
+        let pendingYTUrl = "";
+
+        async function analyzeURL() {
+            const url = document.getElementById("urlInput").value.trim();
+            if (!url) {
+                showToast("⚠️ Lütfen bir link yapıştırın");
+                return;
+            }
+
+            if (url.includes('youtube.com') || url.includes('youtu.be')) {
+                openYTNotice(url);
+                return;
+            }
+
+            currentURL = url;
+            const btn = document.getElementById("analyzeBtn");
+            const input = document.getElementById("urlInput");
+            
+            btn.disabled = true;
+            btn.innerHTML = "⏳ Analiz ediliyor...";
+            input.disabled = true;
+            
+            document.getElementById("resultCard").style.display = "none";
+            document.getElementById("loadingArea").style.display = "block";
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 15000);
+                
+                const res = await fetch(`${BACKEND_URL}/start`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url: currentURL, format: 'mp4' }),
+                    signal: controller.signal
+                });
+                
+                clearTimeout(timeoutId);
+                
+                if (!res.ok) {
+                    throw new Error(`Sunucu hatası: ${res.status}`);
+                }
+                
+                const data = await res.json();
+                
+                if (data.job_id) {
+                    currentJobId = data.job_id;
+                    checkStatus(data.job_id);
+                } else {
+                    throw new Error(data.error || "Job ID alınamadı");
+                }
+            } catch (e) {
+                console.error("Analyze error:", e);
+                if (e.name === 'AbortError') {
+                    showToast("⚠️ Sunucu yanıt vermedi. Lütfen tekrar deneyin.");
+                } else {
+                    showToast("❌ " + e.message);
+                }
+                resetUI();
+            }
+        }
+
+        async function checkStatus(jobId) {
+            let attempts = 0;
+            const maxAttempts = 60;
+            
+            const checkInterval = setInterval(async () => {
+                try {
+                    const res = await fetch(`${BACKEND_URL}/status/${jobId}`);
+                    const data = await res.json();
+
+                    if (data.status === 'done' || data.status === 'completed') {
+                        clearInterval(checkInterval);
+                        document.getElementById("loadingArea").style.display = "none";
+                        document.getElementById("resultCard").style.display = "block";
+                        document.getElementById("previewTitle").textContent = data.title || "Video Hazır";
+                        resetUI();
+                        showToast("✅ Video hazır!");
+                    } else if (data.status === 'error') {
+                        clearInterval(checkInterval);
+                        showToast("❌ " + (data.message || "İndirme hatası"));
+                        resetUI();
+                    } else {
+                        attempts++;
+                        if (attempts >= maxAttempts) {
+                            clearInterval(checkInterval);
+                            showToast("⏱️ Zaman aşımı. Lütfen tekrar deneyin.");
+                            resetUI();
+                        }
+                    }
+                } catch (e) {
+                    console.error("Status check error:", e);
+                    attempts++;
+                    if (attempts >= maxAttempts) {
+                        clearInterval(checkInterval);
+                        showToast("⚠️ Bağlantı hatası. Backend erişilemiyor.");
+                        resetUI();
+                    }
+                }
+            }, 2000);
+        }
+
+        async function downloadNow(format) {
+            const videoBtn = document.getElementById("videoBtn");
+            const audioBtn = document.getElementById("audioBtn");
+            
+            if (videoBtn) videoBtn.disabled = true;
+            if (audioBtn) audioBtn.disabled = true;
+            
+            try {
+                if (format === 'mp4') {
+                    showToast("⬇️ Video indiriliyor...");
+                    
+                    const downloadUrl = `${BACKEND_URL}/proxy/${currentJobId}`;
+                    
+                    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                        window.location.href = downloadUrl;
+                    } else {
+                        const res = await fetch(downloadUrl);
+                        if (!res.ok) throw new Error('İndirme başarısız');
+                        
+                        const blob = await res.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = `video.mp4`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }
+                    
+                    showToast("✅ Video indirildi!");
+                } else {
+                    showToast("🎵 Ses hazırlanıyor...");
+                    await startNewDownload('mp3');
+                }
+            } catch (e) {
+                console.error("Download error:", e);
+                showToast("❌ " + e.message);
+            } finally {
+                if (videoBtn) videoBtn.disabled = false;
+                if (audioBtn) audioBtn.disabled = false;
+            }
+        }
+
+        async function startNewDownload(format) {
+            if (!currentURL) {
+                throw new Error("URL bulunamadı");
+            }
+            
+            const res = await fetch(`${BACKEND_URL}/start`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: currentURL, format: format })
+            });
+            
+            const data = await res.json();
+            
+            if (!data.job_id) {
+                throw new Error(data.error || 'İndirme başlatılamadı');
+            }
+            
+            let attempts = 0;
+            const maxAttempts = 30;
+            
+            while (attempts < maxAttempts) {
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
+                const statusRes = await fetch(`${BACKEND_URL}/status/${data.job_id}`);
+                const statusData = await statusRes.json();
+                
+                if (statusData.status === 'done' || statusData.status === 'completed') {
+                    const downloadUrl = `${BACKEND_URL}/proxy/${data.job_id}`;
+                    
+                    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+                        window.location.href = downloadUrl;
+                    } else {
+                        const fileRes = await fetch(downloadUrl);
+                        const blob = await fileRes.blob();
+                        const url = window.URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = format === 'mp3' ? `audio.mp3` : `video.mp4`;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        window.URL.revokeObjectURL(url);
+                    }
+                    
+                    showToast(format === 'mp3' ? "✅ Ses indirildi!" : "✅ Video indirildi!");
+                    return;
+                    
+                } else if (statusData.status === 'error') {
+                    throw new Error(statusData.message || 'İndirme hatası');
+                }
+                
+                attempts++;
+            }
+            
+            throw new Error('Zaman aşımı');
+        }
+
+        function resetUI() {
+            const btn = document.getElementById("analyzeBtn");
+            const input = document.getElementById("urlInput");
+            
+            btn.disabled = false;
+            btn.innerHTML = "Analiz Et ve İndir";
+            input.disabled = false;
+            input.value = "";
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById("toast");
+            if (!t) return;
+            t.textContent = msg;
+            t.classList.add("show");
+            setTimeout(() => t.classList.remove("show"), 4000);
+        }
+
+        async function pasteFromClipboard() {
+            try {
+                const text = await navigator.clipboard.readText();
+                document.getElementById("urlInput").value = text;
+                showToast("📋 Yapıştırıldı");
+            } catch (e) {
+                showToast("❌ Panoya erişim reddedildi");
+            }
+        }
+
+        function openYTNotice(url) {
+            pendingYTUrl = url;
+            document.getElementById('ytNoticeModal').style.display = 'flex';
+        }
+
+        function closeYTNotice() {
+            document.getElementById('ytNoticeModal').style.display = 'none';
+            pendingYTUrl = "";
+            showToast("İptal edildi");
+        }
+
+        function continueToYT() {
+            if (!pendingYTUrl) {
+                closeYTNotice();
+                return;
+            }
+            
+            document.getElementById('ytNoticeModal').style.display = 'none';
+            showToast("🎬 YouTube downloader açılıyor...");
+            
+            const downloaderURL = `https://speedscribe.ai/tr/downloader/youtube-video-downloader/#${encodeURIComponent(pendingYTUrl)}`;
+            
+            setTimeout(() => {
+                window.open(downloaderURL, '_blank');
+            }, 500);
+            
+            pendingYTUrl = "";
+        }
+
+        document.addEventListener('click', function(event) {
+            const modal = document.getElementById('ytNoticeModal');
+            if (event.target === modal) {
+                closeYTNotice();
+            }
+        });
+    </script>
+</body>
+</html>
