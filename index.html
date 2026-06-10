@@ -15,6 +15,7 @@
             min-height: 100vh;
             color: #fff;
             padding: 20px;
+            padding-bottom: 120px;
             line-height: 1.6;
         }
 
@@ -70,7 +71,6 @@
             margin: 10px 0 6px;
             letter-spacing: -1.5px;
             animation: titleGlow 3s ease-in-out infinite;
-            text-shadow: none;
         }
 
         @keyframes titleGlow {
@@ -86,10 +86,10 @@
             margin-bottom: 18px;
         }
 
-        /* Platform ikonu şeridi */
         .platform-strip {
             display: flex;
             justify-content: center;
+            flex-wrap: wrap;
             gap: 6px;
             margin-top: 4px;
         }
@@ -109,32 +109,8 @@
             transition: all 0.2s ease;
         }
 
-        .platform-pill:hover {
-            background: rgba(255,255,255,0.22);
-            transform: translateY(-2px);
-        }
-
+        .platform-pill:hover { background: rgba(255,255,255,0.22); transform: translateY(-2px); }
         .platform-pill span:first-child { font-size: 14px; }
-
-        /* ── Büyük dekoratif arka plan yazısı ── */
-        .bg-text-wrap {
-            position: relative;
-            margin-bottom: 28px;
-        }
-
-        .bg-watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 72px;
-            font-weight: 900;
-            color: rgba(255,255,255,0.04);
-            white-space: nowrap;
-            pointer-events: none;
-            letter-spacing: -2px;
-            user-select: none;
-        }
 
         /* ── Card ── */
         .card {
@@ -145,20 +121,13 @@
             padding: 26px;
             margin-bottom: 20px;
             border: 1px solid rgba(255,255,255,0.2);
-            box-shadow:
-                0 8px 32px rgba(0,0,0,0.2),
-                0 2px 8px rgba(0,0,0,0.1),
-                inset 0 1px 0 rgba(255,255,255,0.3),
-                inset 0 -1px 0 rgba(0,0,0,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-4px);
-            box-shadow:
-                0 20px 56px rgba(0,0,0,0.28),
-                0 4px 12px rgba(0,0,0,0.12),
-                inset 0 1px 0 rgba(255,255,255,0.3);
+            box-shadow: 0 20px 56px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
         /* ── Input ── */
@@ -199,11 +168,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
         }
 
         .paste-btn:hover { background: rgba(255,255,255,0.24); transform: scale(1.08) rotate(-5deg); }
-        .paste-btn:active { transform: scale(0.95); }
 
         /* ── Buttons ── */
         .action-btn, .liquid-btn {
@@ -222,7 +189,7 @@
         }
 
         .liquid-btn-primary {
-            background: linear-gradient(135deg, #e91e8c 0%, #ff3399 50%, #ff6ec7 100%);
+            background: linear-gradient(135deg, #e91e8c, #ff3399, #ff6ec7);
             background-size: 200% 200%;
             animation: gradientFlow 3s ease infinite;
             color: #fff;
@@ -236,34 +203,15 @@
             100% { background-position: 0% 50%; }
         }
 
-        .liquid-btn.video {
-            background: linear-gradient(135deg, #e040fb 0%, #f44369 100%);
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(228,64,251,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
-        }
+        .liquid-btn.video { background: linear-gradient(135deg, #e040fb, #f44369); color: #fff; box-shadow: 0 8px 24px rgba(228,64,251,0.35), inset 0 1px 0 rgba(255,255,255,0.2); }
+        .liquid-btn.audio { background: linear-gradient(135deg, #29b6f6, #00e5ff); color: #fff; box-shadow: 0 8px 24px rgba(41,182,246,0.35), inset 0 1px 0 rgba(255,255,255,0.2); }
 
-        .liquid-btn.audio {
-            background: linear-gradient(135deg, #29b6f6 0%, #00e5ff 100%);
-            color: #fff;
-            box-shadow: 0 8px 24px rgba(41,182,246,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
-        }
-
-        .btn-text {
-            position: relative;
-            z-index: 10;
-            display: block;
-            font-weight: 700;
-            pointer-events: none;
-            letter-spacing: 0.5px;
-        }
+        .btn-text { position: relative; z-index: 10; display: block; font-weight: 700; pointer-events: none; letter-spacing: 0.5px; }
 
         .blob {
-            position: absolute;
-            top: 50%;
-            width: 30px;
-            height: 30px;
-            background: inherit;
-            border-radius: 50%;
+            position: absolute; top: 50%;
+            width: 30px; height: 30px;
+            background: inherit; border-radius: 50%;
             transform: translateY(-50%) scale(0);
             transition: transform 0.7s cubic-bezier(0.68,-0.55,0.265,1.55);
             z-index: 1;
@@ -274,71 +222,30 @@
         .blob:nth-child(4) { left: 56%; transition-delay: 0.04s; }
         .blob:nth-child(5) { left: 80%; transition-delay: 0.12s; }
 
-        .liquid-btn:hover, .action-btn:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
-        }
-
-        .action-btn:hover {
-            box-shadow: 0 16px 40px rgba(233,30,140,0.5), 0 0 40px rgba(233,30,140,0.3), inset 0 1px 0 rgba(255,255,255,0.25);
-        }
-
+        .liquid-btn:hover, .action-btn:hover { transform: translateY(-4px) scale(1.02); }
+        .action-btn:hover { box-shadow: 0 16px 40px rgba(233,30,140,0.5), 0 0 40px rgba(233,30,140,0.3); }
         .liquid-btn:active, .action-btn:active { transform: translateY(-1px) scale(0.98); }
         .liquid-btn:hover .blob, .action-btn:hover .blob { transform: translateY(-50%) scale(3.2); }
-
-        .liquid-btn:disabled, .action-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            transform: none !important;
-            animation: none;
-            box-shadow: none;
-        }
+        .liquid-btn:disabled, .action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; animation: none; }
 
         /* ── Progress ── */
         .loading-container { text-align: center; padding: 36px 20px; }
 
-        .progress-ring-wrap {
-            position: relative;
-            width: 84px;
-            height: 84px;
-            margin: 0 auto 18px;
-        }
-
+        .progress-ring-wrap { position: relative; width: 84px; height: 84px; margin: 0 auto 18px; }
         .progress-ring { transform: rotate(-90deg); }
-
-        .progress-ring-bg {
-            fill: none;
-            stroke: rgba(255,255,255,0.12);
-            stroke-width: 6;
-        }
-
+        .progress-ring-bg { fill: none; stroke: rgba(255,255,255,0.12); stroke-width: 6; }
         .progress-ring-fill {
-            fill: none;
-            stroke: url(#progressGrad);
-            stroke-width: 6;
-            stroke-linecap: round;
-            stroke-dasharray: 226;
-            stroke-dashoffset: 226;
+            fill: none; stroke: #fff; stroke-width: 6;
+            stroke-linecap: round; stroke-dasharray: 226; stroke-dashoffset: 226;
             transition: stroke-dashoffset 0.5s ease;
             filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
         }
-
-        .progress-pct {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 15px;
-            font-weight: 800;
-            color: #fff;
-        }
-
+        .progress-pct { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 15px; font-weight: 800; }
         .loading-container > p { font-size: 15px; color: rgba(255,255,255,0.9); margin-bottom: 4px; font-weight: 500; }
         .loading-sub { font-size: 12px !important; color: rgba(255,255,255,0.5) !important; }
 
         /* ── Result ── */
-        .result-card {
-            animation: cardSlideUp 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
-        }
+        .result-card { animation: cardSlideUp 0.6s cubic-bezier(0.68,-0.55,0.265,1.55); }
 
         @keyframes cardSlideUp {
             from { opacity: 0; transform: translateY(40px) scale(0.95); }
@@ -346,148 +253,68 @@
         }
 
         .video-preview {
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding: 16px;
-            background: rgba(0,0,0,0.18);
-            border-radius: 20px;
+            display: flex; gap: 14px; align-items: flex-start;
+            margin-bottom: 20px; padding: 16px;
+            background: rgba(0,0,0,0.18); border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
         }
 
-        .thumbnail-wrap {
-            flex-shrink: 0;
-            width: 96px;
-            height: 68px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.15);
-        }
-
+        .thumbnail-wrap { flex-shrink: 0; width: 96px; height: 68px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); }
         .thumbnail-wrap img { width: 100%; height: 100%; object-fit: cover; }
-
         .preview-info { flex: 1; min-width: 0; }
-
-        .preview-info h3 {
-            font-size: 14px;
-            margin-bottom: 8px;
-            word-break: break-word;
-            font-weight: 600;
-            line-height: 1.45;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            color: rgba(255,255,255,0.95);
-        }
-
+        .preview-info h3 { font-size: 14px; margin-bottom: 8px; word-break: break-word; font-weight: 600; line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
         .meta-row { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-
-        .meta-item {
-            font-size: 11px;
-            color: rgba(255,255,255,0.7);
-            background: rgba(255,255,255,0.1);
-            padding: 3px 9px;
-            border-radius: 20px;
-            white-space: nowrap;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+        .meta-item { font-size: 11px; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); padding: 3px 9px; border-radius: 20px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.1); }
 
         .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 7px 16px;
-            background: linear-gradient(135deg, #00c853, #69f0ae);
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 700;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 16px; background: linear-gradient(135deg, #00c853, #69f0ae);
+            border-radius: 20px; font-size: 12px; font-weight: 700;
             box-shadow: 0 4px 14px rgba(0,200,83,0.45);
             animation: badgePulse 2s ease-in-out infinite;
         }
 
         @keyframes badgePulse {
-            0%,100% { transform: scale(1); box-shadow: 0 4px 14px rgba(0,200,83,0.45); }
-            50%      { transform: scale(1.04); box-shadow: 0 6px 20px rgba(0,200,83,0.65); }
+            0%,100% { transform: scale(1); }
+            50%      { transform: scale(1.04); }
         }
 
         .download-buttons { display: flex; flex-direction: column; gap: 10px; }
 
         .new-btn {
-            width: 100%;
-            margin-top: 12px;
-            padding: 12px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 16px;
-            color: rgba(255,255,255,0.7);
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            letter-spacing: 0.3px;
+            width: 100%; margin-top: 12px; padding: 12px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 16px; color: rgba(255,255,255,0.7); font-size: 13px; font-weight: 600;
+            cursor: pointer; transition: all 0.3s ease;
         }
-
         .new-btn:hover { background: rgba(255,255,255,0.16); color: #fff; transform: translateY(-1px); }
 
         /* ── Toast ── */
         .toast {
-            position: fixed;
-            bottom: 28px;
-            left: 50%;
+            position: fixed; bottom: 110px; left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: rgba(15,15,25,0.92);
-            backdrop-filter: blur(16px);
-            color: #fff;
-            padding: 13px 26px;
-            border-radius: 16px;
-            font-size: 14px;
-            font-weight: 500;
-            opacity: 0;
+            background: rgba(15,15,25,0.92); backdrop-filter: blur(16px);
+            color: #fff; padding: 13px 26px; border-radius: 16px;
+            font-size: 14px; font-weight: 500; opacity: 0;
             transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.12);
-            max-width: 88vw;
-            text-align: center;
+            z-index: 999; box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.12); max-width: 88vw; text-align: center;
         }
-
         .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 16px;
-            color: rgba(255,255,255,0.45);
-            font-size: 11px;
-            letter-spacing: 0.5px;
-        }
+        footer { text-align: center; margin-top: 20px; padding: 16px; color: rgba(255,255,255,0.45); font-size: 11px; letter-spacing: 0.5px; }
 
         /* ── YouTube Modal ── */
         .yt-notice-modal {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.72);
-            backdrop-filter: blur(12px);
-            z-index: 3000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.72); backdrop-filter: blur(12px);
+            z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px;
         }
 
         .yt-notice-card {
-            background: linear-gradient(160deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-            border-radius: 28px;
-            padding: 30px 26px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.12);
+            background: linear-gradient(160deg, #1a1a2e, #16213e, #0f3460);
+            border-radius: 28px; padding: 30px 26px; max-width: 400px; width: 100%;
+            text-align: center; border: 1px solid rgba(255,255,255,0.12);
             box-shadow: 0 24px 64px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
             animation: cardBounce 0.5s cubic-bezier(0.68,-0.55,0.265,1.55);
         }
@@ -498,64 +325,480 @@
         }
 
         .yt-notice-icon { font-size: 52px; margin-bottom: 14px; }
-
-        .yt-notice-title {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        .yt-notice-title { font-size: 20px; font-weight: 800; margin-bottom: 10px; background: linear-gradient(135deg, #ffd700, #ffed4e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
         .yt-notice-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; margin-bottom: 18px; }
-
-        .yt-notice-features {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            padding: 14px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
+        .yt-notice-features { display: flex; justify-content: space-around; margin-bottom: 20px; padding: 14px; background: rgba(255,255,255,0.05); border-radius: 16px; }
         .yt-feature { display: flex; flex-direction: column; align-items: center; gap: 4px; }
         .yt-feature-icon { font-size: 20px; }
         .yt-feature span:last-child { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 500; }
-
         .yt-notice-buttons { display: flex; gap: 10px; }
-
-        .yt-btn-cancel, .yt-btn-continue {
-            flex: 1;
-            padding: 13px;
-            border: none;
-            border-radius: 14px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
+        .yt-btn-cancel, .yt-btn-continue { flex: 1; padding: 13px; border: none; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; }
         .yt-btn-cancel { background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.18); }
         .yt-btn-cancel:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
         .yt-btn-continue { background: linear-gradient(135deg, #e91e8c, #ff3399); color: #fff; box-shadow: 0 4px 16px rgba(233,30,140,0.4); }
-        .yt-btn-continue:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(233,30,140,0.6); }
+        .yt-btn-continue:hover { transform: translateY(-2px); }
+
+        /* ════════════════════════════════
+           MÜZİK PLAYER
+        ════════════════════════════════ */
+        #musicPlayer {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background: rgba(10,10,20,0.92);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border-top: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 -8px 32px rgba(0,0,0,0.4);
+            z-index: 500;
+            padding: 10px 16px 14px;
+            transition: transform 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+        }
+
+        #musicPlayer.hidden { transform: translateY(100%); }
+
+        .player-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .player-thumb {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.15);
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .player-info { flex: 1; min-width: 0; }
+
+        .player-title {
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #fff;
+        }
+
+        .player-sub {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 1px;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ctrl-btn {
+            background: none;
+            border: none;
+            color: rgba(255,255,255,0.85);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 4px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            width: 36px; height: 36px;
+        }
+
+        .ctrl-btn:hover { background: rgba(255,255,255,0.12); transform: scale(1.1); }
+        .ctrl-btn.play-btn { font-size: 24px; width: 42px; height: 42px; background: rgba(255,255,255,0.15); }
+        .ctrl-btn.play-btn:hover { background: rgba(255,255,255,0.25); }
+
+        .volume-wrap {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .volume-slider {
+            -webkit-appearance: none;
+            width: 70px; height: 4px;
+            border-radius: 2px;
+            background: rgba(255,255,255,0.2);
+            outline: none;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 14px; height: 14px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* İlerleme çubuğu */
+        .progress-bar-wrap {
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 2px;
+            cursor: pointer;
+            margin-bottom: 6px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e91e8c, #ff6ec7);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 1s linear;
+        }
+
+        .progress-times {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 8px;
+        }
+
+        /* Müzik input alanı */
+        .music-input-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        #musicUrlInput {
+            flex: 1;
+            padding: 9px 14px;
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 12px;
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        #musicUrlInput::placeholder { color: rgba(255,255,255,0.35); }
+        #musicUrlInput:focus { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.12); }
+
+        .music-play-btn {
+            padding: 9px 16px;
+            background: linear-gradient(135deg, #e91e8c, #ff3399);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .music-play-btn:hover { transform: scale(1.04); box-shadow: 0 4px 12px rgba(233,30,140,0.4); }
+
+        /* Playlist */
+        .playlist-wrap {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .playlist-wrap.open { max-height: 200px; }
+
+        .playlist-scroll {
+            max-height: 180px;
+            overflow-y: auto;
+            padding: 4px 0;
+        }
+
+        .playlist-scroll::-webkit-scrollbar { width: 4px; }
+        .playlist-scroll::-webkit-scrollbar-track { background: transparent; }
+        .playlist-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 6px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .playlist-item:hover { background: rgba(255,255,255,0.08); }
+        .playlist-item.active { background: rgba(233,30,140,0.2); border: 1px solid rgba(233,30,140,0.3); }
+
+        .pl-num {
+            font-size: 11px;
+            color: rgba(255,255,255,0.4);
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .playlist-item.active .pl-num { color: #ff3399; }
+
+        .pl-thumb {
+            width: 32px; height: 32px;
+            border-radius: 6px;
+            object-fit: cover;
+            background: rgba(255,255,255,0.1);
+            flex-shrink: 0;
+        }
+
+        .pl-info { flex: 1; min-width: 0; }
+        .pl-title { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pl-dur { font-size: 10px; color: rgba(255,255,255,0.4); }
+
+        .pl-del {
+            background: none; border: none;
+            color: rgba(255,255,255,0.3); font-size: 16px;
+            cursor: pointer; padding: 2px 6px; border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .pl-del:hover { color: #ff5252; background: rgba(255,82,82,0.1); }
+
+        /* Player toggle butonu */
+        .player-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .player-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .player-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .icon-btn {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: rgba(255,255,255,0.6);
+            font-size: 13px;
+            padding: 4px 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .icon-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        .icon-btn.active { background: rgba(233,30,140,0.25); border-color: rgba(233,30,140,0.4); color: #ff3399; }
+
+        /* YouTube iframe gizli */
+        #ytFrame { position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; }
 
         /* ── Responsive ── */
         @media (max-width: 480px) {
-            body { padding: 12px; }
+            body { padding: 12px; padding-bottom: 130px; }
             .brand-logo { font-size: 60px; }
             .brand-name { font-size: 30px; }
             .card { padding: 20px; border-radius: 22px; }
-            .platform-strip { flex-wrap: wrap; gap: 5px; }
             .video-preview { flex-direction: column; }
             .thumbnail-wrap { width: 100%; height: 130px; }
+            .volume-slider { width: 50px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        /* ════════════════════════════════
+           DYNAMIC ISLAND
+        ════════════════════════════════ */
+        #dynamicIsland {
+            position: fixed;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0.3) scaleY(0.6);
+            width: 120px;
+            height: 36px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        #dynamicIsland.visible {
+            opacity: 1;
+            transform: translateX(-50%) scaleX(1) scaleY(1);
+        }
+
+        #dynamicIsland.expanded {
+            width: 300px;
+            height: 80px;
+            border-radius: 26px;
+            gap: 12px;
+            padding: 0 14px;
+        }
+
+        .di-thumb {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+        }
+
+        #dynamicIsland.expanded .di-thumb {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+        }
+
+        .di-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #ff3399;
+            animation: diPulse 1.2s ease-in-out infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes diPulse {
+            0%,100% { transform: scale(1); opacity: 1; }
+            50%      { transform: scale(1.4); opacity: 0.6; }
+        }
+
+        .di-info {
+            flex: 1;
+            min-width: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease 0.1s;
+        }
+
+        #dynamicIsland.expanded .di-info { opacity: 1; }
+
+        .di-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .di-bars {
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            height: 18px;
+        }
+
+        .di-bar {
+            width: 3px;
+            border-radius: 2px;
+            background: #ff3399;
+            animation: diBar 0.8s ease-in-out infinite alternate;
+        }
+
+        .di-bar:nth-child(1) { height: 8px;  animation-delay: 0s; }
+        .di-bar:nth-child(2) { height: 14px; animation-delay: 0.1s; }
+        .di-bar:nth-child(3) { height: 10px; animation-delay: 0.2s; }
+        .di-bar:nth-child(4) { height: 16px; animation-delay: 0.05s; }
+        .di-bar:nth-child(5) { height: 8px;  animation-delay: 0.15s; }
+
+        @keyframes diBar {
+            from { transform: scaleY(0.4); }
+            to   { transform: scaleY(1); }
+        }
+
+        .di-controls {
+            display: flex;
+            gap: 6px;
+            opacity: 0;
+            transition: opacity 0.3s ease 0.1s;
+        }
+
+        #dynamicIsland.expanded .di-controls { opacity: 1; }
+
+        .di-ctrl {
+            background: rgba(255,255,255,0.12);
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .di-ctrl:hover { background: rgba(255,255,255,0.25); transform: scale(1.1); }
+
+        /* ── Renk Dalgası ── */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(ellipse at 50% 0%, var(--music-color, transparent) 0%, transparent 60%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 1s ease, background 2s ease;
+        }
+
+        body.music-active::before {
+            opacity: 0.35;
+        }
+
+        /* Animasyonlu renk halkası */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--music-color, rgba(233,30,140,0.3)) 0%, transparent 70%);
+            opacity: 0;
+            pointer-events: none;
+            z-index: 0;
+            transition: opacity 1s ease;
+            animation: colorPulseRing 2s ease-in-out infinite;
+        }
+
+        body.music-active::after { opacity: 1; }
+
+        @keyframes colorPulseRing {
+            0%,100% { transform: translateX(-50%) scale(1); opacity: 0.3; }
+            50%      { transform: translateX(-50%) scale(1.3); opacity: 0.1; }
         }
     </style>
 </head>
@@ -585,23 +828,13 @@
             </div>
             <button class="action-btn liquid-btn-primary" onclick="analyzeURL()" id="analyzeBtn">
                 <span class="btn-text">ANALİZ ET VE İNDİR</span>
-                <div class="blob"></div>
-                <div class="blob"></div>
-                <div class="blob"></div>
-                <div class="blob"></div>
+                <div class="blob"></div><div class="blob"></div>
+                <div class="blob"></div><div class="blob"></div>
                 <div class="blob"></div>
             </button>
         </div>
 
         <div id="loadingArea" class="loading-container" style="display:none;">
-            <svg width="0" height="0">
-                <defs>
-                    <linearGradient id="progressGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#ff6ec7"/>
-                        <stop offset="100%" style="stop-color:#ffffff"/>
-                    </linearGradient>
-                </defs>
-            </svg>
             <div class="progress-ring-wrap">
                 <svg class="progress-ring" width="84" height="84">
                     <circle class="progress-ring-bg" cx="42" cy="42" r="36"/>
@@ -646,10 +879,83 @@
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Şahbaz Ailesi — Tüm hakları saklıdır.</p>
-    </footer>
+    <footer><p>&copy; 2026 Şahbaz Ailesi — Tüm hakları saklıdır.</p></footer>
 </div>
+
+<!-- ════ MÜZİK PLAYER ════ -->
+
+<!-- Dynamic Island -->
+<div id="dynamicIsland" onclick="toggleDIExpand()">
+    <img class="di-thumb" id="diThumb" src="" alt="">
+    <div class="di-info">
+        <div class="di-title" id="diTitle">Çalıyor...</div>
+        <div class="di-bars">
+            <div class="di-bar"></div>
+            <div class="di-bar"></div>
+            <div class="di-bar"></div>
+            <div class="di-bar"></div>
+            <div class="di-bar"></div>
+        </div>
+    </div>
+    <div class="di-dot" id="diDot"></div>
+    <div class="di-controls">
+        <button class="di-ctrl" onclick="event.stopPropagation(); prevTrack()">⏮</button>
+        <button class="di-ctrl" id="diPlayBtn" onclick="event.stopPropagation(); togglePlayPause()">⏸️</button>
+        <button class="di-ctrl" onclick="event.stopPropagation(); nextTrack()">⏭</button>
+    </div>
+</div>
+
+<div id="musicPlayer">
+    <div class="player-toggle">
+        <span class="player-label">🎵 Müzik Player</span>
+        <div class="player-actions">
+            <button class="icon-btn" id="shuffleBtn" onclick="toggleShuffle()" title="Karıştır">🔀</button>
+            <button class="icon-btn" id="repeatBtn" onclick="toggleRepeat()" title="Tekrar">🔁</button>
+            <button class="icon-btn" id="playlistToggleBtn" onclick="togglePlaylist()" title="Playlist">📋</button>
+        </div>
+    </div>
+
+    <!-- Müzik URL giriş -->
+    <div class="music-input-row">
+        <input type="url" id="musicUrlInput" placeholder="YouTube link veya playlist linki yapıştır...">
+        <button class="music-play-btn" onclick="addAndPlay()">▶ Ekle</button>
+    </div>
+
+    <!-- Şu an çalıyor -->
+    <div class="player-top">
+        <img class="player-thumb" id="playerThumb" src="" alt="">
+        <div class="player-info">
+            <div class="player-title" id="playerTitle">Şarkı seçilmedi</div>
+            <div class="player-sub" id="playerSub">YouTube link ekle</div>
+        </div>
+        <div class="player-controls">
+            <button class="ctrl-btn" onclick="prevTrack()" title="Önceki">⏮</button>
+            <button class="ctrl-btn play-btn" id="playPauseBtn" onclick="togglePlayPause()">▶️</button>
+            <button class="ctrl-btn" onclick="nextTrack()" title="Sonraki">⏭</button>
+            <div class="volume-wrap">
+                <span style="font-size:14px;">🔊</span>
+                <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="80" oninput="setVolume(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <!-- İlerleme -->
+    <div class="progress-times">
+        <span id="currentTime">0:00</span>
+        <span id="totalTime">0:00</span>
+    </div>
+    <div class="progress-bar-wrap" onclick="seekTo(event)">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+    </div>
+
+    <!-- Playlist -->
+    <div class="playlist-wrap" id="playlistWrap">
+        <div class="playlist-scroll" id="playlistScroll"></div>
+    </div>
+</div>
+
+<!-- Gizli YouTube iframe -->
+<div id="ytFrame"></div>
 
 <div id="toast" class="toast"></div>
 
@@ -679,7 +985,13 @@
     </filter>
 </svg>
 
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
 <script>
+/* ════════════════════════════════
+   İNDİRİCİ
+════════════════════════════════ */
 const BACKEND_URL = "https://sahbaz-backend.onrender.com";
 let currentURL   = "";
 let currentJobId = "";
@@ -687,18 +999,18 @@ let pendingYTUrl = "";
 const CIRCUMFERENCE = 226;
 
 function setProgress(pct) {
-    const circle = document.getElementById('progressCircle');
-    const pctEl  = document.getElementById('progressPct');
-    if (!circle) return;
-    circle.style.strokeDashoffset = CIRCUMFERENCE - (pct / 100) * CIRCUMFERENCE;
-    if (pctEl) pctEl.textContent = Math.round(pct) + '%';
+    const c = document.getElementById('progressCircle');
+    const p = document.getElementById('progressPct');
+    if (!c) return;
+    c.style.strokeDashoffset = CIRCUMFERENCE - (pct / 100) * CIRCUMFERENCE;
+    if (p) p.textContent = Math.round(pct) + '%';
 }
 
 function setLoadingText(msg, sub) {
-    const el    = document.getElementById("loadingText");
-    const subEl = document.getElementById("loadingSub");
+    const el = document.getElementById("loadingText");
+    const se = document.getElementById("loadingSub");
     if (el) el.textContent = msg;
-    if (subEl) subEl.textContent = sub || '';
+    if (se) se.textContent = sub || '';
 }
 
 function detectPlatform(url) {
@@ -708,7 +1020,6 @@ function detectPlatform(url) {
     if (url.includes('facebook.com'))  return '👥 Facebook';
     if (url.includes('pinterest.com')) return '📌 Pinterest';
     if (url.includes('reddit.com'))    return '🤖 Reddit';
-    if (url.includes('vimeo.com'))     return '🎬 Vimeo';
     return '🌐 Video';
 }
 
@@ -723,8 +1034,8 @@ async function analyzeURL() {
 
     currentURL = url;
     const platform = detectPlatform(url);
-    const btn      = document.getElementById("analyzeBtn");
-    const input    = document.getElementById("urlInput");
+    const btn   = document.getElementById("analyzeBtn");
+    const input = document.getElementById("urlInput");
 
     btn.disabled = true;
     btn.querySelector('.btn-text').textContent = "⏳ Analiz ediliyor...";
@@ -740,10 +1051,10 @@ async function analyzeURL() {
         const timeoutId  = setTimeout(() => controller.abort(), 60000);
 
         const res = await fetch(`${BACKEND_URL}/start`, {
-            method:  'POST',
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ url: currentURL, format: 'mp4' }),
-            signal:  controller.signal
+            body: JSON.stringify({ url: currentURL, format: 'mp4' }),
+            signal: controller.signal
         });
 
         clearTimeout(timeoutId);
@@ -758,16 +1069,15 @@ async function analyzeURL() {
 
     } catch (e) {
         document.getElementById("loadingArea").style.display = "none";
-        showToast(e.name === 'AbortError' ? "⚠️ Sunucu yanıt vermedi. Tekrar deneyin." : "❌ " + e.message);
+        showToast(e.name === 'AbortError' ? "⚠️ Sunucu yanıt vermedi." : "❌ " + e.message);
         resetUI();
     }
 }
 
 async function checkStatus(jobId) {
     let attempts = 0;
-    const maxAttempts = 90;
-
-    const checkInterval = setInterval(async () => {
+    const max = 90;
+    const iv = setInterval(async () => {
         try {
             const res  = await fetch(`${BACKEND_URL}/status/${jobId}`);
             const data = await res.json();
@@ -779,7 +1089,7 @@ async function checkStatus(jobId) {
             }
 
             if (data.status === 'done' || data.status === 'completed') {
-                clearInterval(checkInterval);
+                clearInterval(iv);
                 setProgress(100);
                 setTimeout(() => {
                     document.getElementById("loadingArea").style.display = "none";
@@ -787,28 +1097,25 @@ async function checkStatus(jobId) {
                     resetUI();
                     showToast("✅ Video hazır!");
                 }, 400);
-
             } else if (data.status === 'error') {
-                clearInterval(checkInterval);
+                clearInterval(iv);
                 document.getElementById("loadingArea").style.display = "none";
-                showToast("❌ " + (data.message || "İndirme hatası"));
+                showToast("❌ " + (data.message || "Hata"));
                 resetUI();
-
             } else {
                 attempts++;
-                if (attempts === 10) setLoadingText("İşleniyor, biraz sabır...");
-                if (attempts === 25) setLoadingText("Büyük dosya olabilir...");
-                if (attempts >= maxAttempts) {
-                    clearInterval(checkInterval);
+                if (attempts === 10) setLoadingText("İşleniyor...");
+                if (attempts === 25) setLoadingText("Büyük dosya...");
+                if (attempts >= max) {
+                    clearInterval(iv);
                     document.getElementById("loadingArea").style.display = "none";
-                    showToast("⏱️ Zaman aşımı. Tekrar deneyin.");
+                    showToast("⏱️ Zaman aşımı.");
                     resetUI();
                 }
             }
         } catch (e) {
-            attempts++;
-            if (attempts >= maxAttempts) {
-                clearInterval(checkInterval);
+            if (++attempts >= max) {
+                clearInterval(iv);
                 document.getElementById("loadingArea").style.display = "none";
                 showToast("⚠️ Bağlantı hatası.");
                 resetUI();
@@ -824,34 +1131,27 @@ function showResult(data) {
     if (data.thumbnail) {
         const wrap = document.getElementById("thumbnailWrap");
         const img  = document.getElementById("thumbnail");
-        img.src    = data.thumbnail;
+        img.src = data.thumbnail;
         img.onerror = () => { wrap.style.display = 'none'; };
         wrap.style.display = "block";
     }
 
-    if (data.uploader) {
-        const el = document.getElementById("metaUploader");
-        el.textContent = "👤 " + data.uploader;
-        el.style.display = "inline-flex";
-    }
-    if (data.duration) {
-        const el = document.getElementById("metaDuration");
-        el.textContent = "⏱ " + data.duration;
-        el.style.display = "inline-flex";
-    }
-    if (data.filesize) {
-        const el = document.getElementById("metaFilesize");
-        el.textContent = "💾 " + data.filesize;
-        el.style.display = "inline-flex";
-    }
+    const fields = [
+        ['metaUploader', data.uploader ? "👤 " + data.uploader : null],
+        ['metaDuration', data.duration  ? "⏱ " + data.duration  : null],
+        ['metaFilesize', data.filesize  ? "💾 " + data.filesize  : null],
+    ];
+    fields.forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (el && val) { el.textContent = val; el.style.display = "inline-flex"; }
+    });
 }
 
 async function downloadNow(format) {
-    const videoBtn = document.getElementById("videoBtn");
-    const audioBtn = document.getElementById("audioBtn");
-    if (videoBtn) videoBtn.disabled = true;
-    if (audioBtn) audioBtn.disabled = true;
-
+    const vb = document.getElementById("videoBtn");
+    const ab = document.getElementById("audioBtn");
+    if (vb) vb.disabled = true;
+    if (ab) ab.disabled = true;
     try {
         if (format === 'mp4') {
             showToast("⬇️ Video indiriliyor...");
@@ -864,72 +1164,53 @@ async function downloadNow(format) {
     } catch (e) {
         showToast("❌ " + e.message);
     } finally {
-        if (videoBtn) videoBtn.disabled = false;
-        if (audioBtn) audioBtn.disabled = false;
+        if (vb) vb.disabled = false;
+        if (ab) ab.disabled = false;
     }
 }
 
 async function triggerDownload(url, filename) {
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
-        window.location.href = url;
-        return;
-    }
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) { window.location.href = url; return; }
     const res = await fetch(url);
     if (!res.ok) throw new Error('İndirme başarısız: ' + res.status);
-    const blob   = await res.blob();
-    const objUrl = window.URL.createObjectURL(blob);
-    const a      = document.createElement('a');
-    a.href       = objUrl;
-    a.download   = filename;
+    const blob = await res.blob();
+    const ou   = window.URL.createObjectURL(blob);
+    const a    = Object.assign(document.createElement('a'), { href: ou, download: filename });
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    window.URL.revokeObjectURL(objUrl);
+    window.URL.revokeObjectURL(ou);
 }
 
 async function startNewDownload(format) {
     if (!currentURL) throw new Error("URL bulunamadı");
-
-    const res  = await fetch(`${BACKEND_URL}/start`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ url: currentURL, format })
-    });
+    const res  = await fetch(`${BACKEND_URL}/start`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: currentURL, format }) });
     const data = await res.json();
     if (!data.job_id) throw new Error(data.error || 'Başlatılamadı');
-
     let attempts = 0;
     while (attempts < 90) {
         await new Promise(r => setTimeout(r, 2000));
-        const statusRes  = await fetch(`${BACKEND_URL}/status/${data.job_id}`);
-        const statusData = await statusRes.json();
-
-        if (statusData.status === 'done' || statusData.status === 'completed') {
-            await triggerDownload(
-                `${BACKEND_URL}/proxy/${data.job_id}`,
-                format === 'mp3' ? 'audio.mp3' : 'video.mp4'
-            );
+        const sd = await (await fetch(`${BACKEND_URL}/status/${data.job_id}`)).json();
+        if (sd.status === 'done' || sd.status === 'completed') {
+            await triggerDownload(`${BACKEND_URL}/proxy/${data.job_id}`, format === 'mp3' ? 'audio.mp3' : 'video.mp4');
             showToast(format === 'mp3' ? "✅ Ses indirildi!" : "✅ Video indirildi!");
             return;
-        } else if (statusData.status === 'error') {
-            throw new Error(statusData.message || 'Hata');
-        }
+        } else if (sd.status === 'error') throw new Error(sd.message || 'Hata');
         attempts++;
     }
     throw new Error('Zaman aşımı');
 }
 
 function resetUI() {
-    const btn   = document.getElementById("analyzeBtn");
-    const input = document.getElementById("urlInput");
+    const btn = document.getElementById("analyzeBtn");
     btn.disabled = false;
     btn.querySelector('.btn-text').textContent = "ANALİZ ET VE İNDİR";
-    input.disabled = false;
+    document.getElementById("urlInput").disabled = false;
 }
 
 function resetFull() {
     resetUI();
-    document.getElementById("urlInput").value           = "";
+    document.getElementById("urlInput").value = "";
     document.getElementById("resultCard").style.display  = "none";
     document.getElementById("loadingArea").style.display = "none";
     ['metaUploader','metaDuration','metaFilesize'].forEach(id => {
@@ -958,30 +1239,381 @@ async function pasteFromClipboard() {
     }
 }
 
-function openYTNotice(url) {
-    pendingYTUrl = url;
-    document.getElementById('ytNoticeModal').style.display = 'flex';
-}
-
-function closeYTNotice() {
-    document.getElementById('ytNoticeModal').style.display = 'none';
-    pendingYTUrl = "";
-    showToast("İptal edildi");
-}
+function openYTNotice(url) { pendingYTUrl = url; document.getElementById('ytNoticeModal').style.display = 'flex'; }
+function closeYTNotice() { document.getElementById('ytNoticeModal').style.display = 'none'; pendingYTUrl = ""; showToast("İptal edildi"); }
 
 function continueToYT() {
     if (!pendingYTUrl) { closeYTNotice(); return; }
     document.getElementById('ytNoticeModal').style.display = 'none';
     showToast("🎬 YouTube downloader açılıyor...");
-    const url = `https://speedscribe.ai/tr/downloader/youtube-video-downloader/#${encodeURIComponent(pendingYTUrl)}`;
-    setTimeout(() => window.open(url, '_blank'), 500);
+    setTimeout(() => window.open(`https://speedscribe.ai/tr/downloader/youtube-video-downloader/#${encodeURIComponent(pendingYTUrl)}`, '_blank'), 500);
     pendingYTUrl = "";
 }
 
 document.addEventListener('click', e => {
-    const modal = document.getElementById('ytNoticeModal');
-    if (e.target === modal) closeYTNotice();
+    if (e.target === document.getElementById('ytNoticeModal')) closeYTNotice();
 });
+
+/* ════════════════════════════════
+   MÜZİK PLAYER
+════════════════════════════════ */
+let ytPlayer       = null;
+let ytReady        = false;
+let playlist       = [];
+let currentIndex   = -1;
+let isPlaying      = false;
+let isShuffle      = false;
+let isRepeat       = false;
+let progressTimer  = null;
+
+// YouTube API hazır
+function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('ytFrame', {
+        height: '1',
+        width:  '1',
+        playerVars: { autoplay: 0, controls: 0, playsinline: 1 },
+        events: {
+            onReady:       () => { ytReady = true; },
+            onStateChange: onPlayerStateChange,
+            onError:       onPlayerError,
+        }
+    });
+}
+
+function onPlayerStateChange(event) {
+    if (event.data === YT.PlayerState.PLAYING) {
+        isPlaying = true;
+        document.getElementById('playPauseBtn').textContent = '⏸️';
+        startProgressTimer();
+        updatePlayerMeta();
+        updateDIPlayState(true);
+    } else if (event.data === YT.PlayerState.PAUSED) {
+        isPlaying = false;
+        document.getElementById('playPauseBtn').textContent = '▶️';
+        clearProgressTimer();
+        updateDIPlayState(false);
+    } else if (event.data === YT.PlayerState.ENDED) {
+        isPlaying = false;
+        document.getElementById('playPauseBtn').textContent = '▶️';
+        clearProgressTimer();
+        if (isRepeat) {
+            playTrack(currentIndex);
+        } else {
+            nextTrack();
+        }
+    }
+}
+
+function onPlayerError(event) {
+    showToast("❌ Bu video oynatılamıyor (telif hakkı kısıtı olabilir)");
+    nextTrack();
+}
+
+// YouTube ID çıkar
+function extractVideoId(url) {
+    const patterns = [
+        /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
+        /youtube\.com\/shorts\/([a-zA-Z0-9_-]{11})/,
+    ];
+    for (const p of patterns) {
+        const m = url.match(p);
+        if (m) return m[1];
+    }
+    return null;
+}
+
+// Playlist ID çıkar
+function extractPlaylistId(url) {
+    const m = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
+    return m ? m[1] : null;
+}
+
+// YouTube Data API olmadan video başlığı/thumbnail
+function getVideoInfo(videoId) {
+    return {
+        title:     'YouTube Video',
+        thumbnail: `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`,
+        duration:  ''
+    };
+}
+
+async function addAndPlay() {
+    const url = document.getElementById('musicUrlInput').value.trim();
+    if (!url) { showToast("⚠️ Link yapıştırın"); return; }
+    if (!url.includes('youtube.com') && !url.includes('youtu.be')) {
+        showToast("⚠️ Sadece YouTube linkleri desteklenir"); return;
+    }
+
+    const plId = extractPlaylistId(url);
+    const vId  = extractVideoId(url);
+
+    if (plId) {
+        // Playlist ekle
+        showToast("📋 Playlist yükleniyor...");
+        await loadPlaylist(plId, vId);
+    } else if (vId) {
+        // Tek video ekle
+        addTrack(vId);
+        playTrack(playlist.length - 1);
+    } else {
+        showToast("❌ Geçersiz YouTube linki");
+        return;
+    }
+
+    document.getElementById('musicUrlInput').value = '';
+}
+
+async function loadPlaylist(plId, startVideoId) {
+    // YouTube IFrame API ile playlist yükle
+    if (!ytReady) { showToast("⚠️ Player hazırlanıyor..."); return; }
+
+    // Playlist'i doğrudan player'a yükle
+    ytPlayer.loadPlaylist({ listType: 'playlist', list: plId, index: 0 });
+    isPlaying = true;
+    document.getElementById('playPauseBtn').textContent = '⏸️';
+    showToast("▶️ Playlist başlatıldı");
+    showDynamicIsland('Playlist çalıyor', '');
+
+    // Manuel playlist yönetimini sıfırla
+    playlist = [];
+    currentIndex = -1;
+    renderPlaylist();
+}
+
+function addTrack(videoId) {
+    const info = getVideoInfo(videoId);
+    playlist.push({ id: videoId, ...info });
+    renderPlaylist();
+}
+
+function playTrack(index) {
+    if (!ytReady || index < 0 || index >= playlist.length) return;
+    currentIndex = index;
+    const track = playlist[index];
+
+    ytPlayer.loadVideoById(track.id);
+    ytPlayer.setVolume(parseInt(document.getElementById('volumeSlider').value));
+
+    document.getElementById('playerTitle').textContent   = track.title;
+    document.getElementById('playerSub').textContent     = `${index + 1} / ${playlist.length}`;
+    document.getElementById('playerThumb').src           = track.thumbnail;
+    document.getElementById('playPauseBtn').textContent  = '⏸️';
+    isPlaying = true;
+    showDynamicIsland(track.title, track.thumbnail);
+
+    renderPlaylist();
+}
+
+function updatePlayerMeta() {
+    try {
+        const data = ytPlayer.getVideoData();
+        if (data && data.title) {
+            document.getElementById('playerTitle').textContent = data.title;
+            document.getElementById('diTitle').textContent     = data.title;
+            if (currentIndex >= 0 && playlist[currentIndex]) {
+                playlist[currentIndex].title = data.title;
+                renderPlaylist();
+            }
+        }
+    } catch(e) {}
+}
+
+function togglePlayPause() {
+    if (!ytReady) return;
+    if (isPlaying) {
+        ytPlayer.pauseVideo();
+    } else {
+        ytPlayer.playVideo();
+    }
+}
+
+function prevTrack() {
+    if (playlist.length === 0) return;
+    let idx = currentIndex - 1;
+    if (idx < 0) idx = playlist.length - 1;
+    playTrack(idx);
+}
+
+function nextTrack() {
+    if (playlist.length === 0) {
+        // Playlist modunda sonraki
+        if (ytReady) { try { ytPlayer.nextVideo(); } catch(e) {} }
+        return;
+    }
+    let idx;
+    if (isShuffle) {
+        idx = Math.floor(Math.random() * playlist.length);
+    } else {
+        idx = currentIndex + 1;
+        if (idx >= playlist.length) idx = 0;
+    }
+    playTrack(idx);
+}
+
+function setVolume(val) {
+    if (ytReady) ytPlayer.setVolume(parseInt(val));
+}
+
+function startProgressTimer() {
+    clearProgressTimer();
+    progressTimer = setInterval(() => {
+        try {
+            const cur = ytPlayer.getCurrentTime() || 0;
+            const dur = ytPlayer.getDuration()    || 0;
+            const pct = dur > 0 ? (cur / dur) * 100 : 0;
+            document.getElementById('progressBarFill').style.width = pct + '%';
+            document.getElementById('currentTime').textContent = formatTime(cur);
+            document.getElementById('totalTime').textContent   = formatTime(dur);
+        } catch(e) {}
+    }, 1000);
+}
+
+function clearProgressTimer() {
+    if (progressTimer) { clearInterval(progressTimer); progressTimer = null; }
+}
+
+function seekTo(event) {
+    if (!ytReady) return;
+    const bar = event.currentTarget;
+    const pct = event.offsetX / bar.offsetWidth;
+    try {
+        const dur = ytPlayer.getDuration() || 0;
+        ytPlayer.seekTo(dur * pct, true);
+    } catch(e) {}
+}
+
+function formatTime(secs) {
+    const m = Math.floor(secs / 60);
+    const s = Math.floor(secs % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+function toggleShuffle() {
+    isShuffle = !isShuffle;
+    document.getElementById('shuffleBtn').classList.toggle('active', isShuffle);
+    showToast(isShuffle ? "🔀 Karıştır açık" : "🔀 Karıştır kapalı");
+}
+
+function toggleRepeat() {
+    isRepeat = !isRepeat;
+    document.getElementById('repeatBtn').classList.toggle('active', isRepeat);
+    showToast(isRepeat ? "🔁 Tekrar açık" : "🔁 Tekrar kapalı");
+}
+
+function togglePlaylist() {
+    const wrap = document.getElementById('playlistWrap');
+    wrap.classList.toggle('open');
+    document.getElementById('playlistToggleBtn').classList.toggle('active', wrap.classList.contains('open'));
+}
+
+function renderPlaylist() {
+    const scroll = document.getElementById('playlistScroll');
+    if (playlist.length === 0) {
+        scroll.innerHTML = '<div style="text-align:center;color:rgba(255,255,255,0.3);font-size:12px;padding:12px;">Henüz şarkı eklenmedi</div>';
+        return;
+    }
+
+    scroll.innerHTML = playlist.map((t, i) => `
+        <div class="playlist-item ${i === currentIndex ? 'active' : ''}" onclick="playTrack(${i})">
+            <span class="pl-num">${i === currentIndex && isPlaying ? '▶' : i + 1}</span>
+            <img class="pl-thumb" src="${t.thumbnail}" alt="" onerror="this.style.display='none'">
+            <div class="pl-info">
+                <div class="pl-title">${t.title}</div>
+            </div>
+            <button class="pl-del" onclick="removeTrack(event, ${i})">✕</button>
+        </div>
+    `).join('');
+}
+
+function removeTrack(event, index) {
+    event.stopPropagation();
+    playlist.splice(index, 1);
+    if (currentIndex === index) {
+        if (playlist.length > 0) playTrack(Math.min(index, playlist.length - 1));
+        else { currentIndex = -1; document.getElementById('playerTitle').textContent = 'Şarkı seçilmedi'; }
+    } else if (currentIndex > index) {
+        currentIndex--;
+    }
+    renderPlaylist();
+}
+
+
+/* ════════════════════════════════
+   DYNAMIC ISLAND & RENK
+════════════════════════════════ */
+let diExpanded  = false;
+let colorCanvas = document.createElement('canvas');
+let colorCtx    = colorCanvas.getContext('2d');
+colorCanvas.width = colorCanvas.height = 10;
+
+function showDynamicIsland(title, thumb) {
+    const di = document.getElementById('dynamicIsland');
+    document.getElementById('diTitle').textContent = title || 'Çalıyor...';
+    if (thumb) document.getElementById('diThumb').src = thumb;
+    di.classList.add('visible');
+    document.body.classList.add('music-active');
+    extractAndApplyColor(thumb);
+}
+
+function hideDynamicIsland() {
+    document.getElementById('dynamicIsland').classList.remove('visible', 'expanded');
+    document.body.classList.remove('music-active');
+    document.body.style.removeProperty('--music-color');
+    diExpanded = false;
+}
+
+function toggleDIExpand() {
+    const di = document.getElementById('dynamicIsland');
+    diExpanded = !diExpanded;
+    di.classList.toggle('expanded', diExpanded);
+}
+
+function updateDIPlayState(playing) {
+    const btn = document.getElementById('diPlayBtn');
+    if (btn) btn.textContent = playing ? '⏸️' : '▶️';
+    const dot = document.getElementById('diDot');
+    if (dot) dot.style.animationPlayState = playing ? 'running' : 'paused';
+    const bars = document.querySelectorAll('.di-bar');
+    bars.forEach(b => b.style.animationPlayState = playing ? 'running' : 'paused');
+}
+
+function extractAndApplyColor(thumbUrl) {
+    if (!thumbUrl) return;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+        try {
+            colorCtx.drawImage(img, 0, 0, 10, 10);
+            const d = colorCtx.getImageData(0, 0, 10, 10).data;
+            let r = 0, g = 0, b = 0, count = 0;
+            for (let i = 0; i < d.length; i += 4) {
+                r += d[i]; g += d[i+1]; b += d[i+2]; count++;
+            }
+            r = Math.round(r / count);
+            g = Math.round(g / count);
+            b = Math.round(b / count);
+            // Rengi biraz doygunlaştır
+            const max = Math.max(r, g, b);
+            const boost = 1.4;
+            r = Math.min(255, Math.round(r * boost));
+            g = Math.min(255, Math.round(g * boost));
+            b = Math.min(255, Math.round(b * boost));
+            document.body.style.setProperty('--music-color', `rgba(${r},${g},${b},0.6)`);
+            // Player arka plan rengini de güncelle
+            document.getElementById('musicPlayer').style.background =
+                `rgba(${Math.max(0,r-60)},${Math.max(0,g-60)},${Math.max(0,b-60)},0.92)`;
+        } catch(e) {
+            document.body.style.setProperty('--music-color', 'rgba(233,30,140,0.5)');
+        }
+    };
+    img.onerror = () => {
+        document.body.style.setProperty('--music-color', 'rgba(233,30,140,0.5)');
+    };
+    img.src = thumbUrl;
+}
+
+// İlk render
+renderPlaylist();
 </script>
 
 </body>
