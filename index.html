@@ -615,7 +615,7 @@
         /* YouTube iframe gizli */
         #ytFrame { position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; }
 
-        /* ── Responsive ── */
+        /* ── Responsive ─ */
         @media (max-width: 480px) {
             body { padding: 12px; padding-bottom: 130px; }
             .brand-logo { font-size: 60px; }
@@ -766,7 +766,7 @@
 
         .di-ctrl:hover { background: rgba(255,255,255,0.25); transform: scale(1.1); }
 
-        /* ── Renk Dalgası ── */
+        /* ─ Renk Dalgası ── */
         body::before {
             content: '';
             position: fixed;
@@ -819,7 +819,7 @@
             <div class="platform-pill"><span>🎵</span><span>TikTok</span></div>
             <div class="platform-pill"><span>📸</span><span>Instagram</span></div>
             <div class="platform-pill"><span>🐦</span><span>Twitter</span></div>
-            <div class="platform-pill"><span>👥</span><span>Facebook</span></div>
+            <div class="platform-pill"><span></span><span>Facebook</span></div>
             <div class="platform-pill"><span>📌</span><span>Pinterest</span></div>
         </div>
     </header>
@@ -913,7 +913,7 @@
 
 <div id="musicPlayer">
     <div class="player-toggle">
-        <span class="player-label">🎵 Müzik Player</span>
+        <span class="player-label"> Müzik Player</span>
         <div class="player-actions">
             <button class="icon-btn" id="shuffleBtn" onclick="toggleShuffle()" title="Karıştır">🔀</button>
             <button class="icon-btn" id="repeatBtn" onclick="toggleRepeat()" title="Tekrar">🔁</button>
@@ -972,7 +972,7 @@
         <p class="yt-notice-text">YouTube videoları, anlaşmalı partner sitemiz üzerinden güvenli bir şekilde indirilmektedir.</p>
         <div class="yt-notice-features">
             <div class="yt-feature"><span class="yt-feature-icon">✅</span><span>Güvenli</span></div>
-            <div class="yt-feature"><span class="yt-feature-icon">⚡</span><span>Hızlı</span></div>
+            <div class="yt-feature"><span class="yt-feature-icon"></span><span>Hızlı</span></div>
             <div class="yt-feature"><span class="yt-feature-icon">🎯</span><span>Kaliteli</span></div>
         </div>
         <div class="yt-notice-buttons">
@@ -1023,15 +1023,15 @@ function detectPlatform(url) {
     if (url.includes('tiktok.com'))    return '🎵 TikTok';
     if (url.includes('instagram.com')) return '📸 Instagram';
     if (url.includes('twitter.com') || url.includes('x.com')) return '🐦 Twitter/X';
-    if (url.includes('facebook.com'))  return '👥 Facebook';
+    if (url.includes('facebook.com'))  return ' Facebook';
     if (url.includes('pinterest.com')) return '📌 Pinterest';
-    if (url.includes('reddit.com'))    return '🤖 Reddit';
+    if (url.includes('reddit.com'))    return ' Reddit';
     return '🌐 Video';
 }
 
 async function analyzeURL() {
     const url = document.getElementById("urlInput").value.trim();
-    if (!url) { showToast("⚠️ Lütfen bir link yapıştırın"); return; }
+    if (!url) { showToast("️ Lütfen bir link yapıştırın"); return; }
 
     if (url.includes('youtube.com') || url.includes('youtu.be')) {
         openYTNotice(url);
@@ -1106,7 +1106,7 @@ async function checkStatus(jobId) {
             } else if (data.status === 'error') {
                 clearInterval(iv);
                 document.getElementById("loadingArea").style.display = "none";
-                showToast("❌ " + (data.message || "Hata"));
+                showToast(" " + (data.message || "Hata"));
                 resetUI();
             } else {
                 attempts++;
@@ -1123,7 +1123,7 @@ async function checkStatus(jobId) {
             if (++attempts >= max) {
                 clearInterval(iv);
                 document.getElementById("loadingArea").style.display = "none";
-                showToast("⚠️ Bağlantı hatası.");
+                showToast("️ Bağlantı hatası.");
                 resetUI();
             }
         }
@@ -1251,7 +1251,7 @@ function closeYTNotice() { document.getElementById('ytNoticeModal').style.displa
 function continueToYT() {
     if (!pendingYTUrl) { closeYTNotice(); return; }
     document.getElementById('ytNoticeModal').style.display = 'none';
-    showToast("🎬 YouTube downloader açılıyor...");
+    showToast(" YouTube downloader açılıyor...");
     setTimeout(() => window.open(`https://speedscribe.ai/tr/downloader/youtube-video-downloader/#${encodeURIComponent(pendingYTUrl)}`, '_blank'), 500);
     pendingYTUrl = "";
 }
@@ -1622,98 +1622,105 @@ function extractAndApplyColor(thumbUrl) {
 renderPlaylist();
 </script>
 
+<!-- ═══════════════════════════════
+   iOS DYNAMIC ISLAND PİP
+════════════════════════════════ -->
 <script>
-/* ═══════════════════════════════
-   ARKA PLAN MÜZİK - PWA
-════════════════════════════════ */
+let pipVideo = null;
+let isPipRunning = false;
 
-// 1. Service Worker Kaydı
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/indir/sw.js')
-      .then(reg => console.log('✅ SW kaydedildi:', reg.scope))
-      .catch(err => console.log('❌ SW hatası:', err));
-  });
-}
-
-// 2. Media Session API (Kilit ekranı kontrolü)
-if ('mediaSession' in navigator) {
-  navigator.mediaSession.setActionHandler('play', () => {
-    if (ytReady) ytPlayer.playVideo();
-  });
-  navigator.mediaSession.setActionHandler('pause', () => {
-    if (ytReady) ytPlayer.pauseVideo();
-  });
-  navigator.mediaSession.setActionHandler('previoustrack', prevTrack);
-  navigator.mediaSession.setActionHandler('nexttrack', nextTrack);
-}
-
-// 3. Arka plan ses hack
-let bgAudioCtx = null;
-let bgOsc = null;
-let bgKeepAlive = null;
-
-function initBackgroundAudio() {
+async function startDynamicIslandPiP() {
+  pipVideo = document.createElement('video');
+  pipVideo.style.cssText = `
+    position: fixed;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 360px;
+    height: 150px;
+    border-radius: 16px;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+  `;
+  pipVideo.setAttribute('playsinline', 'true');
+  pipVideo.setAttribute('muted', 'true');
+  pipVideo.loop = true;
+  
+  const canvas = document.createElement('canvas');
+  canvas.width = 360;
+  canvas.height = 150;
+  const ctx = canvas.getContext('2d');
+  
+  function drawBackground() {
+    const gradient = ctx.createLinearGradient(0, 0, 360, 150);
+    gradient.addColorStop(0, '#e91e8c');
+    gradient.addColorStop(1, '#764ba2');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 360, 150);
+    
+    const title = document.getElementById('playerTitle')?.textContent || 'Müzik Çalıyor';
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 20px -apple-system, sans-serif';
+    ctx.fillText(title, 20, 50);
+    
+    const progress = document.getElementById('progressBarFill')?.style.width || '0%';
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.fillRect(20, 80, 320, 8);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(20, 80, (320 * parseInt(progress)) / 100, 8);
+  }
+  
+  const interval = setInterval(drawBackground, 1000);
+  drawBackground();
+  
+  const stream = canvas.captureStream(30);
+  pipVideo.srcObject = stream;
+  
+  document.body.appendChild(pipVideo);
+  
   try {
-    bgAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    bgOsc = bgAudioCtx.createOscillator();
-    const gain = bgAudioCtx.createGain();
+    await pipVideo.play();
     
-    bgOsc.connect(gain);
-    gain.connect(bgAudioCtx.destination);
-    bgOsc.frequency.value = 0.0001;
-    gain.gain.value = 0.0001;
-    bgOsc.start();
-    
-    bgKeepAlive = setInterval(() => {
-      if (document.hidden && bgAudioCtx) {
-        if (bgAudioCtx.state === 'suspended') bgAudioCtx.resume();
-        
-        if (bgOsc) { try { bgOsc.stop(); } catch(e){} }
-        bgOsc = bgAudioCtx.createOscillator();
-        const newGain = bgAudioCtx.createGain();
-        bgOsc.connect(newGain);
-        newGain.connect(bgAudioCtx.destination);
-        bgOsc.frequency.value = 0.0001;
-        newGain.gain.value = 0.0001;
-        bgOsc.start();
-        bgOsc.stop(bgAudioCtx.currentTime + 10);
-        
-        if (ytReady && isPlaying) {
-          try {
-            const t = ytPlayer.getCurrentTime();
-            ytPlayer.seekTo(t, true);
-          } catch(e){}
-        }
-      }
-    }, 9000);
-    
-    console.log('🎵 Arka plan ses aktif');
+    if (document.pictureInPictureEnabled) {
+      await pipVideo.requestPictureInPicture();
+      console.log('✅ Dynamic Island PiP ACTIVE');
+      isPipRunning = true;
+      
+      pipVideo.style.opacity = '1';
+      pipVideo.style.pointerEvents = 'auto';
+      
+      showToast('️ Dynamic Island aktif!');
+    }
   } catch(e) {
-    console.log('Arka plan ses hatası:', e);
+    console.log('PiP error:', e);
+    showToast('❌ PiP başlatılamadı');
   }
 }
 
-document.addEventListener('click', () => {
-  if (!bgAudioCtx) initBackgroundAudio();
-  else if (bgAudioCtx.state === 'suspended') bgAudioCtx.resume();
+function addDynamicIslandButton() {
+  const playerActions = document.querySelector('.player-actions');
+  if (playerActions) {
+    const diBtn = document.createElement('button');
+    diBtn.className = 'icon-btn';
+    diBtn.id = 'dynamicIslandBtn';
+    diBtn.innerHTML = '🏝️';
+    diBtn.title = 'Dynamic Island';
+    diBtn.onclick = () => {
+      if (!isPipRunning) {
+        startDynamicIslandPiP();
+      }
+    };
+    playerActions.appendChild(diBtn);
+  }
+}
+
+document.addEventListener('click', function init() {
+  addDynamicIslandButton();
+  document.removeEventListener('click', init);
 }, { once: true });
 
-document.addEventListener('visibilitychange', () => {
-  if (bgAudioCtx) {
-    if (document.hidden) {
-      bgAudioCtx.resume();
-    } else {
-      bgAudioCtx.resume();
-      if (ytReady && isPlaying) ytPlayer.playVideo();
-    }
-  }
-});
-
-window.addEventListener('beforeunload', () => {
-  if (bgKeepAlive) clearInterval(bgKeepAlive);
-  if (bgAudioCtx) bgAudioCtx.close();
-});
+console.log('🏝️ Dynamic Island System LOADED');
 </script>
 
 </body>
