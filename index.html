@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Şahbaz">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/indir/manifest.json">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/732/732200.png">
     <title>Şahbaz Family - Premium Video İndirici</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,6 +40,7 @@
             to   { opacity: 1; transform: translateY(0); }
         }
 
+        /* ── Header ── */
         header {
             text-align: center;
             margin-bottom: 28px;
@@ -111,6 +118,7 @@
         .platform-pill:hover { background: rgba(255,255,255,0.22); transform: translateY(-2px); }
         .platform-pill span:first-child { font-size: 14px; }
 
+        /* ── Card ── */
         .card {
             background: rgba(255,255,255,0.09);
             backdrop-filter: blur(24px) saturate(200%);
@@ -128,6 +136,7 @@
             box-shadow: 0 20px 56px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.3);
         }
 
+        /* ── Input ── */
         .input-wrapper { display: flex; gap: 10px; margin-bottom: 14px; }
 
         #urlInput {
@@ -169,6 +178,7 @@
 
         .paste-btn:hover { background: rgba(255,255,255,0.24); transform: scale(1.08) rotate(-5deg); }
 
+        /* ── Buttons ── */
         .action-btn, .liquid-btn {
             position: relative;
             padding: 18px 32px;
@@ -224,6 +234,7 @@
         .liquid-btn:hover .blob, .action-btn:hover .blob { transform: translateY(-50%) scale(3.2); }
         .liquid-btn:disabled, .action-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none !important; animation: none; }
 
+        /* ── Progress ── */
         .loading-container { text-align: center; padding: 36px 20px; }
 
         .progress-ring-wrap { position: relative; width: 84px; height: 84px; margin: 0 auto 18px; }
@@ -239,6 +250,7 @@
         .loading-container > p { font-size: 15px; color: rgba(255,255,255,0.9); margin-bottom: 4px; font-weight: 500; }
         .loading-sub { font-size: 12px !important; color: rgba(255,255,255,0.5) !important; }
 
+        /* ── Result ── */
         .result-card { animation: cardSlideUp 0.6s cubic-bezier(0.68,-0.55,0.265,1.55); }
 
         @keyframes cardSlideUp {
@@ -283,6 +295,7 @@
         }
         .new-btn:hover { background: rgba(255,255,255,0.16); color: #fff; transform: translateY(-1px); }
 
+        /* ── Toast ── */
         .toast {
             position: fixed; bottom: 110px; left: 50%;
             transform: translateX(-50%) translateY(100px);
@@ -297,6 +310,7 @@
 
         footer { text-align: center; margin-top: 20px; padding: 16px; color: rgba(255,255,255,0.45); font-size: 11px; letter-spacing: 0.5px; }
 
+        /* ── YouTube Modal ── */
         .yt-notice-modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.72); backdrop-filter: blur(12px);
@@ -330,6 +344,9 @@
         .yt-btn-continue { background: linear-gradient(135deg, #e91e8c, #ff3399); color: #fff; box-shadow: 0 4px 16px rgba(233,30,140,0.4); }
         .yt-btn-continue:hover { transform: translateY(-2px); }
 
+        /* ════════════════════════════════
+           MÜZİK PLAYER
+        ════════════════════════════════ */
         #musicPlayer {
             position: fixed;
             bottom: 0; left: 0; right: 0;
@@ -434,6 +451,7 @@
             border: none;
         }
 
+        /* İlerleme çubuğu */
         .progress-bar-wrap {
             width: 100%;
             height: 3px;
@@ -459,6 +477,7 @@
             margin-bottom: 8px;
         }
 
+        /* Müzik input alanı */
         .music-input-row {
             display: flex;
             gap: 8px;
@@ -495,6 +514,7 @@
 
         .music-play-btn:hover { transform: scale(1.04); box-shadow: 0 4px 12px rgba(233,30,140,0.4); }
 
+        /* Playlist */
         .playlist-wrap {
             max-height: 0;
             overflow: hidden;
@@ -557,6 +577,7 @@
 
         .pl-del:hover { color: #ff5252; background: rgba(255,82,82,0.1); }
 
+        /* Player toggle butonu */
         .player-toggle {
             display: flex;
             align-items: center;
@@ -591,8 +612,10 @@
         .icon-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
         .icon-btn.active { background: rgba(233,30,140,0.25); border-color: rgba(233,30,140,0.4); color: #ff3399; }
 
+        /* YouTube iframe gizli */
         #ytFrame { position: absolute; top: -9999px; left: -9999px; width: 1px; height: 1px; }
 
+        /* ── Responsive ── */
         @media (max-width: 480px) {
             body { padding: 12px; padding-bottom: 130px; }
             .brand-logo { font-size: 60px; }
@@ -607,6 +630,9 @@
             *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
 
+        /* ════════════════════════════════
+           DYNAMIC ISLAND
+        ════════════════════════════════ */
         #dynamicIsland {
             position: fixed;
             top: 12px;
@@ -740,6 +766,7 @@
 
         .di-ctrl:hover { background: rgba(255,255,255,0.25); transform: scale(1.1); }
 
+        /* ── Renk Dalgası ── */
         body::before {
             content: '';
             position: fixed;
@@ -755,6 +782,7 @@
             opacity: 0.35;
         }
 
+        /* Animasyonlu renk halkası */
         body::after {
             content: '';
             position: fixed;
@@ -860,6 +888,8 @@
     <footer><p>&copy; 2026 Şahbaz Ailesi — Tüm hakları saklıdır.</p></footer>
 </div>
 
+<!-- ════ MÜZİK PLAYER ════ -->
+
 <!-- Dynamic Island -->
 <div id="dynamicIsland" onclick="toggleDIExpand()">
     <img class="di-thumb" id="diThumb" src="" alt="">
@@ -891,11 +921,13 @@
         </div>
     </div>
 
+    <!-- Müzik URL giriş -->
     <div class="music-input-row">
         <input type="url" id="musicUrlInput" placeholder="YouTube link veya playlist linki yapıştır...">
         <button class="music-play-btn" onclick="addAndPlay()">▶ Ekle</button>
     </div>
 
+    <!-- Şu an çalıyor -->
     <div class="player-top">
         <img class="player-thumb" id="playerThumb" src="" alt="">
         <div class="player-info">
@@ -913,6 +945,7 @@
         </div>
     </div>
 
+    <!-- İlerleme -->
     <div class="progress-times">
         <span id="currentTime">0:00</span>
         <span id="totalTime">0:00</span>
@@ -921,12 +954,15 @@
         <div class="progress-bar-fill" id="progressBarFill"></div>
     </div>
 
+    <!-- Playlist -->
     <div class="playlist-wrap" id="playlistWrap">
         <div class="playlist-scroll" id="playlistScroll"></div>
     </div>
 </div>
 
+<!-- Gizli YouTube iframe -->
 <div id="ytFrame"></div>
+
 <div id="toast" class="toast"></div>
 
 <div id="ytNoticeModal" class="yt-notice-modal" style="display:none;">
@@ -955,11 +991,12 @@
     </filter>
 </svg>
 
+<!-- YouTube IFrame API -->
 <script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 /* ════════════════════════════════
-   İNDİRİCİ - DOKUNULMADI ✅
+   İNDİRİCİ
 ════════════════════════════════ */
 const BACKEND_URL = "https://sahbaz-backend.onrender.com";
 let currentURL   = "";
@@ -1224,7 +1261,7 @@ document.addEventListener('click', e => {
 });
 
 /* ════════════════════════════════
-   MÜZİK PLAYER - DÜZELTİLDİ ✅
+   MÜZİK PLAYER
 ════════════════════════════════ */
 let ytPlayer       = null;
 let ytReady        = false;
@@ -1234,8 +1271,8 @@ let isPlaying      = false;
 let isShuffle      = false;
 let isRepeat       = false;
 let progressTimer  = null;
-let isPlaylistMode = false; // Playlist modu flag
 
+// YouTube API hazır
 function onYouTubeIframeAPIReady() {
     ytPlayer = new YT.Player('ytFrame', {
         height: '1',
@@ -1254,14 +1291,8 @@ function onPlayerStateChange(event) {
         isPlaying = true;
         document.getElementById('playPauseBtn').textContent = '⏸️';
         startProgressTimer();
+        updatePlayerMeta();
         updateDIPlayState(true);
-        
-        // Playlist modunda UI güncelle
-        if (isPlaylistMode) {
-            setTimeout(updatePlaylistUI, 500);
-        } else {
-            updatePlayerMeta();
-        }
     } else if (event.data === YT.PlayerState.PAUSED) {
         isPlaying = false;
         document.getElementById('playPauseBtn').textContent = '▶️';
@@ -1271,20 +1302,7 @@ function onPlayerStateChange(event) {
         isPlaying = false;
         document.getElementById('playPauseBtn').textContent = '▶️';
         clearProgressTimer();
-        
-        if (isPlaylistMode) {
-            // Playlist modunda tekrar veya sonraki
-            if (isRepeat) {
-                try {
-                    const idx = ytPlayer.getPlaylistIndex();
-                    ytPlayer.playVideoAt(idx);
-                } catch(e) {
-                    ytPlayer.playVideo();
-                }
-            }
-            // YouTube otomatik sonraki çalacak, UI güncellenecek
-            setTimeout(updatePlaylistUI, 1500);
-        } else if (isRepeat) {
+        if (isRepeat) {
             playTrack(currentIndex);
         } else {
             nextTrack();
@@ -1294,43 +1312,10 @@ function onPlayerStateChange(event) {
 
 function onPlayerError(event) {
     showToast("❌ Bu video oynatılamıyor (telif hakkı kısıtı olabilir)");
-    if (isPlaylistMode) {
-        setTimeout(updatePlaylistUI, 1500);
-    } else {
-        nextTrack();
-    }
+    nextTrack();
 }
 
-// Playlist modunda UI güncelle
-function updatePlaylistUI() {
-    if (!ytReady || !isPlaylistMode) return;
-    
-    try {
-        const data = ytPlayer.getVideoData();
-        const playlistIndex = ytPlayer.getPlaylistIndex();
-        const playlistData = ytPlayer.getPlaylist();
-        const playlistSize = playlistData ? playlistData.length : 0;
-        
-        if (data && data.title) {
-            document.getElementById('playerTitle').textContent = data.title;
-            document.getElementById('diTitle').textContent = data.title;
-        }
-        
-        const videoId = data && data.video_id ? data.video_id : null;
-        if (videoId) {
-            const thumb = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-            document.getElementById('playerThumb').src = thumb;
-            showDynamicIsland(data.title || 'Playlist çalıyor', thumb);
-        }
-        
-        if (playlistSize > 0) {
-            document.getElementById('playerSub').textContent = `${playlistIndex + 1} / ${playlistSize}`;
-        }
-    } catch(e) {
-        console.log('Playlist UI update hatası:', e);
-    }
-}
-
+// YouTube ID çıkar
 function extractVideoId(url) {
     const patterns = [
         /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/,
@@ -1343,11 +1328,13 @@ function extractVideoId(url) {
     return null;
 }
 
+// Playlist ID çıkar
 function extractPlaylistId(url) {
     const m = url.match(/[?&]list=([a-zA-Z0-9_-]+)/);
     return m ? m[1] : null;
 }
 
+// YouTube Data API olmadan video başlığı/thumbnail
 function getVideoInfo(videoId) {
     return {
         title:     'YouTube Video',
@@ -1367,10 +1354,11 @@ async function addAndPlay() {
     const vId  = extractVideoId(url);
 
     if (plId) {
+        // Playlist ekle
         showToast("📋 Playlist yükleniyor...");
         await loadPlaylist(plId, vId);
     } else if (vId) {
-        isPlaylistMode = false;
+        // Tek video ekle
         addTrack(vId);
         playTrack(playlist.length - 1);
     } else {
@@ -1382,23 +1370,20 @@ async function addAndPlay() {
 }
 
 async function loadPlaylist(plId, startVideoId) {
+    // YouTube IFrame API ile playlist yükle
     if (!ytReady) { showToast("⚠️ Player hazırlanıyor..."); return; }
 
-    isPlaylistMode = true;
-    playlist = [];
-    currentIndex = -1;
-    renderPlaylist();
-    
+    // Playlist'i doğrudan player'a yükle
     ytPlayer.loadPlaylist({ listType: 'playlist', list: plId, index: 0 });
-    ytPlayer.playVideo();
-    
     isPlaying = true;
     document.getElementById('playPauseBtn').textContent = '⏸️';
     showToast("▶️ Playlist başlatıldı");
     showDynamicIsland('Playlist çalıyor', '');
-    
-    // İlk şarkı için UI güncelle
-    setTimeout(updatePlaylistUI, 2000);
+
+    // Manuel playlist yönetimini sıfırla
+    playlist = [];
+    currentIndex = -1;
+    renderPlaylist();
 }
 
 function addTrack(videoId) {
@@ -1412,7 +1397,6 @@ function playTrack(index) {
     currentIndex = index;
     const track = playlist[index];
 
-    isPlaylistMode = false;
     ytPlayer.loadVideoById(track.id);
     ytPlayer.setVolume(parseInt(document.getElementById('volumeSlider').value));
 
@@ -1450,12 +1434,6 @@ function togglePlayPause() {
 }
 
 function prevTrack() {
-    if (isPlaylistMode && ytReady) {
-        try { ytPlayer.previousVideo(); } catch(e) {}
-        setTimeout(updatePlaylistUI, 1000);
-        return;
-    }
-    
     if (playlist.length === 0) return;
     let idx = currentIndex - 1;
     if (idx < 0) idx = playlist.length - 1;
@@ -1463,13 +1441,11 @@ function prevTrack() {
 }
 
 function nextTrack() {
-    if (isPlaylistMode && ytReady) {
-        try { ytPlayer.nextVideo(); } catch(e) {}
-        setTimeout(updatePlaylistUI, 1000);
+    if (playlist.length === 0) {
+        // Playlist modunda sonraki
+        if (ytReady) { try { ytPlayer.nextVideo(); } catch(e) {} }
         return;
     }
-    
-    if (playlist.length === 0) return;
     let idx;
     if (isShuffle) {
         idx = Math.floor(Math.random() * playlist.length);
@@ -1567,8 +1543,9 @@ function removeTrack(event, index) {
     renderPlaylist();
 }
 
+
 /* ════════════════════════════════
-   DYNAMIC ISLAND & RENK - DOKUNULMADI ✅
+   DYNAMIC ISLAND & RENK
 ════════════════════════════════ */
 let diExpanded  = false;
 let colorCanvas = document.createElement('canvas');
@@ -1621,12 +1598,14 @@ function extractAndApplyColor(thumbUrl) {
             r = Math.round(r / count);
             g = Math.round(g / count);
             b = Math.round(b / count);
+            // Rengi biraz doygunlaştır
             const max = Math.max(r, g, b);
             const boost = 1.4;
             r = Math.min(255, Math.round(r * boost));
             g = Math.min(255, Math.round(g * boost));
             b = Math.min(255, Math.round(b * boost));
             document.body.style.setProperty('--music-color', `rgba(${r},${g},${b},0.6)`);
+            // Player arka plan rengini de güncelle
             document.getElementById('musicPlayer').style.background =
                 `rgba(${Math.max(0,r-60)},${Math.max(0,g-60)},${Math.max(0,b-60)},0.92)`;
         } catch(e) {
@@ -1639,7 +1618,102 @@ function extractAndApplyColor(thumbUrl) {
     img.src = thumbUrl;
 }
 
+// İlk render
 renderPlaylist();
+</script>
+
+<script>
+/* ═══════════════════════════════
+   ARKA PLAN MÜZİK - PWA
+════════════════════════════════ */
+
+// 1. Service Worker Kaydı
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/indir/sw.js')
+      .then(reg => console.log('✅ SW kaydedildi:', reg.scope))
+      .catch(err => console.log('❌ SW hatası:', err));
+  });
+}
+
+// 2. Media Session API (Kilit ekranı kontrolü)
+if ('mediaSession' in navigator) {
+  navigator.mediaSession.setActionHandler('play', () => {
+    if (ytReady) ytPlayer.playVideo();
+  });
+  navigator.mediaSession.setActionHandler('pause', () => {
+    if (ytReady) ytPlayer.pauseVideo();
+  });
+  navigator.mediaSession.setActionHandler('previoustrack', prevTrack);
+  navigator.mediaSession.setActionHandler('nexttrack', nextTrack);
+}
+
+// 3. Arka plan ses hack
+let bgAudioCtx = null;
+let bgOsc = null;
+let bgKeepAlive = null;
+
+function initBackgroundAudio() {
+  try {
+    bgAudioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    bgOsc = bgAudioCtx.createOscillator();
+    const gain = bgAudioCtx.createGain();
+    
+    bgOsc.connect(gain);
+    gain.connect(bgAudioCtx.destination);
+    bgOsc.frequency.value = 0.0001;
+    gain.gain.value = 0.0001;
+    bgOsc.start();
+    
+    bgKeepAlive = setInterval(() => {
+      if (document.hidden && bgAudioCtx) {
+        if (bgAudioCtx.state === 'suspended') bgAudioCtx.resume();
+        
+        if (bgOsc) { try { bgOsc.stop(); } catch(e){} }
+        bgOsc = bgAudioCtx.createOscillator();
+        const newGain = bgAudioCtx.createGain();
+        bgOsc.connect(newGain);
+        newGain.connect(bgAudioCtx.destination);
+        bgOsc.frequency.value = 0.0001;
+        newGain.gain.value = 0.0001;
+        bgOsc.start();
+        bgOsc.stop(bgAudioCtx.currentTime + 10);
+        
+        if (ytReady && isPlaying) {
+          try {
+            const t = ytPlayer.getCurrentTime();
+            ytPlayer.seekTo(t, true);
+          } catch(e){}
+        }
+      }
+    }, 9000);
+    
+    console.log('🎵 Arka plan ses aktif');
+  } catch(e) {
+    console.log('Arka plan ses hatası:', e);
+  }
+}
+
+document.addEventListener('click', () => {
+  if (!bgAudioCtx) initBackgroundAudio();
+  else if (bgAudioCtx.state === 'suspended') bgAudioCtx.resume();
+}, { once: true });
+
+document.addEventListener('visibilitychange', () => {
+  if (bgAudioCtx) {
+    if (document.hidden) {
+      bgAudioCtx.resume();
+    } else {
+      bgAudioCtx.resume();
+      if (ytReady && isPlaying) ytPlayer.playVideo();
+    }
+  }
+});
+
+window.addEventListener('beforeunload', () => {
+  if (bgKeepAlive) clearInterval(bgKeepAlive);
+  if (bgAudioCtx) bgAudioCtx.close();
+});
 </script>
 
 </body>
